@@ -14,61 +14,64 @@
   <nav class="nav">
     <a class="nav-brand" href="#top">alperenyu.net</a>
     <div class="nav-links">
-      <a href="#about">About</a>
-      <a href="#experience">Experience</a>
-      <a href="#projects">Projects</a>
-      <a href="#education">Education</a>
-      <a href="#contact">Contact</a>
+      <a href="#about" id="nav-about">About</a>
+      <a href="#experience" id="nav-experience">Experience</a>
+      <a href="#projects" id="nav-projects">Projects</a>
+      <a href="#education" id="nav-education">Education</a>
+      <a href="#contact" id="nav-contact">Contact</a>
     </div>
-    <button id="theme-toggle" aria-label="Toggle dark mode">☾</button>
+    <div class="nav-toggles">
+      <button id="lang-toggle" aria-label="Switch language">TR</button>
+      <button id="theme-toggle" aria-label="Toggle dark mode">☾</button>
+    </div>
   </nav>
 
   <header class="hero" id="top">
-    <p class="hero-eyebrow">Hi, I'm</p>
+    <p class="hero-eyebrow" id="hero-eyebrow">Hi, I'm</p>
     <h1>Alperen Yiğit Ünal</h1>
-    <p class="hero-tagline">I research materials — from superalloys to drug-delivery polymers.</p>
+    <p class="hero-tagline" id="hero-tagline">I research materials — from superalloys to drug-delivery polymers.</p>
     <div class="hero-buttons">
-      <a class="btn btn-primary" href="#projects">See my projects</a>
-      <a class="btn btn-secondary" href="#contact">Get in touch</a>
+      <a class="btn btn-primary" href="#projects" id="hero-btn-projects">See my projects</a>
+      <a class="btn btn-secondary" href="#contact" id="hero-btn-contact">Get in touch</a>
     </div>
   </header>
 
   <main>
     <section class="section" id="about">
-      <h2>About me</h2>
+      <h2 id="heading-about">About me</h2>
       <p id="about-text">Loading…</p>
       <ul class="interest-list" id="interest-list"></ul>
     </section>
 
     <section class="section" id="experience">
-      <h2>Experience</h2>
+      <h2 id="heading-experience">Experience</h2>
       <div class="entry-list" id="list-experience"></div>
     </section>
 
     <section class="section" id="projects">
-      <h2>Projects</h2>
+      <h2 id="heading-projects">Projects</h2>
       <div class="entry-list" id="list-projects"></div>
     </section>
 
     <section class="section" id="education">
-      <h2>Education</h2>
+      <h2 id="heading-education">Education</h2>
       <div class="entry-list entry-list--compact" id="list-education"></div>
     </section>
 
     <section class="section" id="involvement">
-      <h2>Clubs &amp; Outreach</h2>
+      <h2 id="heading-clubs">Clubs &amp; Outreach</h2>
       <div class="entry-list" id="list-clubs"></div>
     </section>
 
     <section class="section" id="skills">
-      <h2>Skills &amp; Languages</h2>
+      <h2 id="heading-skills">Skills &amp; Languages</h2>
       <div class="skills-grid" id="skills-grid"></div>
     </section>
   </main>
 
   <footer class="footer" id="contact">
     <div class="footer-links" id="footer-links"></div>
-    <p class="footer-copy">© 2026 Alperen Yiğit Ünal</p>
+    <p class="footer-copy" id="footer-copy">© 2026 Alperen Yiğit Ünal</p>
   </footer>
 
   <script src="script.js"></script>

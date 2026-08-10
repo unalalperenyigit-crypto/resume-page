@@ -58,7 +58,9 @@ a { color: var(--accent); }
   font-size: 14px;
 }
 .nav-links a:hover { color: var(--text); }
-#theme-toggle {
+.nav-toggles { display: flex; gap: 8px; }
+
+#theme-toggle, #lang-toggle {
   background: none;
   border: 1px solid var(--border);
   border-radius: 6px;
@@ -67,6 +69,8 @@ a { color: var(--accent); }
   color: var(--text);
   font-size: 14px;
 }
+
+#lang-toggle { font-family: 'Space Grotesk', sans-serif; font-weight: 600; min-width: 38px; }
 
 /* ---------- Hero ---------- */
 .hero {
