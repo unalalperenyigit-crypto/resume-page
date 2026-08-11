@@ -182,8 +182,9 @@ const DATA = {
         ] },
       { role: "Üye", org: "TÜBİTAK Fen Lisesi Yapay Zeka Kulübü", date: "Ekim 2025 – Günümüz",
         bullets: ["Her biri yaklaşık 200 katılımcıya ulaşan iki Üretken Yapay Zeka sempozyumu düzenledi."] },
-      { role: "Kurucu Ortak", org: "Youth AI Initiative", date: "Ekim 2025 – Mart 2026",
-        bullets: ["Türkiye genelindeki lise öğrencilerini hedefleyen bir yapay zeka eğitim programı için eğitim oturumlarını koordine etti."] },
+      { role: "Kurucu Ortak", org: "Youth AI Initiative, youthaiinitiative.com", date: "Ekim 2025 – Mart 2026",
+        bullets: ["Türkiye genelindeki lise öğrencilerini hedefleyen bir yapay zeka eğitim programı için eğitim oturumlarını koordine etti.",
+                 "200'den fazla kişi arasından seçilen 50 öğrenci ile toplamda 6 farklı yapay zeka kullanımı projesi yapılmasını sağladı"] },
       { role: "Gönüllü", org: "Young Guru Academy (YGA)", date: "Ekim 2025 – Günümüz",
         bullets: [
           "20.000'den fazla başvuru arasından ilk 25'e giren Global Impact High School programına katıldı.",
