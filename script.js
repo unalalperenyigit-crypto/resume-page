@@ -16,7 +16,8 @@ const DATA = {
     ui: {
       nav: { about: "About", experience: "Experience", projects: "Projects", education: "Education", contact: "Contact" },
       hero: { eyebrow: "Hi, I'm", tagline: "I research materials — from superalloys to drug-delivery polymers.", btnProjects: "See my projects", btnContact: "Get in touch" },
-      headings: { about: "About me", experience: "Experience", projects: "Projects", education: "Education", clubs: "Clubs & Outreach", skills: "Skills & Languages" },
+      headings: { about: "About me", experience: "Experience", projects: "Projects", education: "Education", clubs: "Clubs & Outreach", skills: "Skills & Languages", contact: "Contact" },
+      contactIntro: "Feel free to reach out — happy to talk research, robotics, or opportunities to collaborate.",
       footer: "© 2026 Alperen Yiğit Ünal"
     },
     about: {
@@ -46,7 +47,7 @@ const DATA = {
           "Synthesized and characterized block copolymers with active-targeting drug-delivery capability, from reaction design through characterization sample prep.",
           "Authored a research project for the international GENIUS Olympiad competition and was selected as a finalist."
         ], tags: ["Polymer Chemistry", "Drug Delivery"] },
-      { role: "Volunteer Intern", org: "SUNUM Nanotechnology Research Center", date: "Aug 2026 - Sep 2026",
+      { role: "Volunteer Intern", org: "SUNUM Nanotechnology Research Center", date: "2025",
         bullets: [
           "Worked on an EMI shielding project involving graphene oxide modification for MXene synthesis.",
           "Performed electrospinning work toward membrane fabrication."
@@ -110,7 +111,8 @@ const DATA = {
     ui: {
       nav: { about: "Hakkımda", experience: "Deneyim", projects: "Projeler", education: "Eğitim", contact: "İletişim" },
       hero: { eyebrow: "Merhaba, ben", tagline: "Süper alaşımlardan ilaç taşıyıcı polimerlere, malzeme araştırmaları yapıyorum.", btnProjects: "Projelerimi gör", btnContact: "İletişime geç" },
-      headings: { about: "Hakkımda", experience: "Deneyim", projects: "Projeler", education: "Eğitim", clubs: "Kulüpler & Sosyal Etkinlikler", skills: "Yetenekler & Diller" },
+      headings: { about: "Hakkımda", experience: "Deneyim", projects: "Projeler", education: "Eğitim", clubs: "Kulüpler & Sosyal Etkinlikler", skills: "Yetenekler & Diller", contact: "İletişim" },
+      contactIntro: "Bana ulaşmaktan çekinme — araştırma, robotik ya da iş birliği fırsatları hakkında konuşmaktan memnuniyet duyarım.",
       footer: "© 2026 Alperen Yiğit Ünal"
     },
     about: {
@@ -140,7 +142,7 @@ const DATA = {
           "Aktif hedeflemeli ilaç taşıma yeteneklerine sahip blok kopolimerler sentezledi ve karakterize etti.",
           "Uluslararası GENIUS Olimpiyatları için bir araştırma projesi yazdı ve finalist olarak seçildi."
         ], tags: ["Polimer Kimyası", "İlaç Taşıma"] },
-      { role: "Gönüllü Stajyer", org: "SUNUM Nanoteknoloji Araştırma Merkezi", date: "Ağustos 2026 - Eylül 2026",
+      { role: "Gönüllü Stajyer", org: "SUNUM Nanoteknoloji Araştırma Merkezi", date: "2025",
         bullets: [
           "MXene sentezi için grafen oksit modifikasyonu içeren bir EMI (elektromanyetik girişim) kalkanlama projesinde çalıştı.",
           "Membran üretimine yönelik elektro-eğirme (electrospinning) çalışmaları gerçekleştirdi."
@@ -182,9 +184,8 @@ const DATA = {
         ] },
       { role: "Üye", org: "TÜBİTAK Fen Lisesi Yapay Zeka Kulübü", date: "Ekim 2025 – Günümüz",
         bullets: ["Her biri yaklaşık 200 katılımcıya ulaşan iki Üretken Yapay Zeka sempozyumu düzenledi."] },
-      { role: "Kurucu Ortak", org: "Youth AI Initiative, youthaiinitiative.com", date: "Ekim 2025 – Mart 2026",
-        bullets: ["Türkiye genelindeki lise öğrencilerini hedefleyen bir yapay zeka eğitim programı için eğitim oturumlarını koordine etti.",
-                 "200'den fazla kişi arasından seçilen 50 öğrenci ile toplamda 6 farklı yapay zeka kullanımı projesi yapılmasını sağladı"] },
+      { role: "Kurucu Ortak", org: "Youth AI Initiative", date: "Ekim 2025 – Mart 2026",
+        bullets: ["Türkiye genelindeki lise öğrencilerini hedefleyen bir yapay zeka eğitim programı için eğitim oturumlarını koordine etti."] },
       { role: "Gönüllü", org: "Young Guru Academy (YGA)", date: "Ekim 2025 – Günümüz",
         bullets: [
           "20.000'den fazla başvuru arasından ilk 25'e giren Global Impact High School programına katıldı.",
@@ -204,7 +205,9 @@ const DATA = {
 
 const CONTACT = {
   linkedin: "https://linkedin.com/in/alperen-yigit-unal",
-  email: "alperen.unal@tubitak.gov.tr"
+  email: "alperen.unal@tubitak.gov.tr",
+  phone: "+90 (553) 703 70 98",
+  location: "Gebze, Kocaeli, Türkiye"
 };
 
 /* ============================================================
@@ -235,11 +238,6 @@ function renderEntry(entry) {
     card.appendChild(ul);
   }
   if (entry.detail) card.appendChild(el('p', { className: 'entry-detail', text: entry.detail }));
-  if (entry.tags) {
-    const row = el('div', { className: 'tag-row' });
-    entry.tags.forEach(t => row.appendChild(el('span', { className: 'tag', text: t })));
-    card.appendChild(row);
-  }
   return card;
 }
 
@@ -269,6 +267,8 @@ function renderAll(lang) {
   document.getElementById('heading-education').textContent = d.ui.headings.education;
   document.getElementById('heading-clubs').textContent = d.ui.headings.clubs;
   document.getElementById('heading-skills').textContent = d.ui.headings.skills;
+  document.getElementById('heading-contact').textContent = d.ui.headings.contact;
+  document.getElementById('contact-intro').textContent = d.ui.contactIntro;
   document.getElementById('footer-copy').textContent = d.ui.footer;
 
   document.documentElement.lang = lang;
@@ -304,17 +304,40 @@ function renderAll(lang) {
   langCol.appendChild(langUl);
   grid.appendChild(langCol);
 
-  clear('footer-links');
-  const wrap = document.getElementById('footer-links');
-  if (CONTACT.linkedin) {
-    const a = el('a', { text: 'LinkedIn' });
-    a.href = CONTACT.linkedin; a.target = '_blank';
-    wrap.appendChild(a);
-  }
+  clear('contact-grid');
+  const grid2 = document.getElementById('contact-grid');
+  const isTr = lang === 'tr';
+
   if (CONTACT.email) {
-    const a = el('a', { text: lang === 'tr' ? 'E-posta' : 'Email' });
+    const a = el('a', { className: 'contact-card' });
     a.href = `mailto:${CONTACT.email}`;
-    wrap.appendChild(a);
+    a.innerHTML = `<span class="contact-card-icon">✉️</span>
+      <span class="contact-card-label">${isTr ? 'E-posta' : 'Email'}</span>
+      <span class="contact-card-value">${CONTACT.email}</span>`;
+    grid2.appendChild(a);
+  }
+  if (CONTACT.phone) {
+    const a = el('a', { className: 'contact-card' });
+    a.href = `tel:${CONTACT.phone.replace(/[^+\d]/g, '')}`;
+    a.innerHTML = `<span class="contact-card-icon">📞</span>
+      <span class="contact-card-label">${isTr ? 'Telefon' : 'Phone'}</span>
+      <span class="contact-card-value">${CONTACT.phone}</span>`;
+    grid2.appendChild(a);
+  }
+  if (CONTACT.linkedin) {
+    const a = el('a', { className: 'contact-card' });
+    a.href = CONTACT.linkedin; a.target = '_blank'; a.rel = 'noopener';
+    a.innerHTML = `<span class="contact-card-icon">💼</span>
+      <span class="contact-card-label">LinkedIn</span>
+      <span class="contact-card-value">alperen-yigit-unal</span>`;
+    grid2.appendChild(a);
+  }
+  if (CONTACT.location) {
+    const div = el('div', { className: 'contact-card' });
+    div.innerHTML = `<span class="contact-card-icon">📍</span>
+      <span class="contact-card-label">${isTr ? 'Konum' : 'Location'}</span>
+      <span class="contact-card-value">${CONTACT.location}</span>`;
+    grid2.appendChild(div);
   }
 }
 
