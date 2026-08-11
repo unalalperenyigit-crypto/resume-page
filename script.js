@@ -15,7 +15,8 @@ const DATA = {
   en: {
     ui: {
       nav: { about: "About", experience: "Experience", projects: "Projects", education: "Education", contact: "Contact" },
-      hero: { eyebrow: "Hi, I'm", tagline: "I research materials — from superalloys to drug-delivery polymers.", btnProjects: "See my projects", btnContact: "Get in touch" },
+      hero: { eyebrow: "Hi, I'm", tagline: "I research materials — from superalloys to drug-delivery polymers.", btnProjects: "See my projects", btnContact: "Get in touch", btnCv: "Download CV" },
+      currentlyLabel: "Currently",
       headings: { about: "About me", experience: "Experience", projects: "Projects", education: "Education", clubs: "Clubs & Outreach", skills: "Skills & Languages", contact: "Contact" },
       contactIntro: "Feel free to reach out — happy to talk research, robotics, or opportunities to collaborate.",
       footer: "© 2026 Alperen Yiğit Ünal"
@@ -110,7 +111,8 @@ const DATA = {
   tr: {
     ui: {
       nav: { about: "Hakkımda", experience: "Deneyim", projects: "Projeler", education: "Eğitim", contact: "İletişim" },
-      hero: { eyebrow: "Merhaba, ben", tagline: "Süper alaşımlardan ilaç taşıyıcı polimerlere, malzeme araştırmaları yapıyorum.", btnProjects: "Projelerimi gör", btnContact: "İletişime geç" },
+      hero: { eyebrow: "Merhaba, ben", tagline: "Süper alaşımlardan ilaç taşıyıcı polimerlere, malzeme araştırmaları yapıyorum.", btnProjects: "Projelerimi gör", btnContact: "İletişime geç", btnCv: "CV İndir" },
+      currentlyLabel: "Şu Anda",
       headings: { about: "Hakkımda", experience: "Deneyim", projects: "Projeler", education: "Eğitim", clubs: "Kulüpler & Sosyal Etkinlikler", skills: "Yetenekler & Diller", contact: "İletişim" },
       contactIntro: "Bana ulaşmaktan çekinme — araştırma, robotik ya da iş birliği fırsatları hakkında konuşmaktan memnuniyet duyarım.",
       footer: "© 2026 Alperen Yiğit Ünal"
@@ -210,6 +212,24 @@ const CONTACT = {
   location: "Gebze, Kocaeli, Türkiye"
 };
 
+// Each item: logo (a real file in this folder) OR initials (fallback badge if no logo yet).
+// To swap a placeholder for a real logo later: add the image file to this folder,
+// then change that item's "initials" line to "logo: 'your-file.png',"
+const CURRENTLY = [
+  { logo: "logo-copolymer.png", label: "Amphiphilic Copolymer Project",
+    status: { en: "Team lead — writing manuscript for ACS Biomacromolecules", tr: "Takım lideri — ACS Biomacromolecules için makale yazıyor" } },
+  { initials: "SN", label: "SUNUM Nanotechnology Research Center",
+    status: { en: "Volunteer intern — EMI shielding & MXene synthesis", tr: "Gönüllü stajyer — EMI kalkanlama & MXene sentezi" } },
+  { initials: "FRC", label: "TUBITECH #9694 — FIRST Robotics",
+    status: { en: "Team member — mentoring & competition builds", tr: "Takım üyesi — mentorluk & yarışma üretimi" } },
+  { initials: "TFL", label: "TÜBİTAK Science High School",
+    status: { en: "Senior year — GPA 98.8/100", tr: "12. sınıf — 98.8/100 not ortalaması" } },
+  { logo: "logo-tobetac.png", label: "ToBeTAC",
+    status: { en: "Board member — Sustainability Applications", tr: "Yönetim kurulu üyesi — Sürdürülebilirlik Uygulamaları" } },
+  { initials: "YGA", label: "Young Guru Academy",
+    status: { en: "Volunteer — Global Impact High School program", tr: "Gönüllü — Global Impact High School programı" } }
+];
+
 /* ============================================================
    DO NOT EDIT BELOW THIS LINE
    (this part reads the DATA above and builds the page)
@@ -260,6 +280,8 @@ function renderAll(lang) {
   document.getElementById('hero-tagline').textContent = d.ui.hero.tagline;
   document.getElementById('hero-btn-projects').textContent = d.ui.hero.btnProjects;
   document.getElementById('hero-btn-contact').textContent = d.ui.hero.btnContact;
+  document.getElementById('hero-btn-cv').textContent = d.ui.hero.btnCv;
+  document.getElementById('currently-label').textContent = d.ui.currentlyLabel;
 
   document.getElementById('heading-about').textContent = d.ui.headings.about;
   document.getElementById('heading-experience').textContent = d.ui.headings.experience;
@@ -339,6 +361,43 @@ function renderAll(lang) {
       <span class="contact-card-value">${CONTACT.location}</span>`;
     grid2.appendChild(div);
   }
+
+  // currently strip
+  clear('currently-grid');
+  const curGrid = document.getElementById('currently-grid');
+  CURRENTLY.forEach(item => {
+    const card = el('div', { className: 'current-card reveal' });
+    if (item.logo) {
+      const img = document.createElement('img');
+      img.className = 'current-logo';
+      img.src = item.logo;
+      img.alt = item.label;
+      card.appendChild(img);
+    } else {
+      card.appendChild(el('div', { className: 'current-monogram', text: item.initials }));
+    }
+    const info = el('div', { className: 'current-info' });
+    info.appendChild(el('h3', { text: item.label }));
+    info.appendChild(el('p', { text: item.status[lang] }));
+    card.appendChild(info);
+    curGrid.appendChild(card);
+  });
+
+  setupScrollReveal();
+}
+
+function setupScrollReveal() {
+  const targets = document.querySelectorAll('.entry, .contact-card, .current-card');
+  targets.forEach(t => t.classList.add('reveal'));
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('reveal-visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  targets.forEach(t => observer.observe(t));
 }
 
 function setupLangToggle() {
