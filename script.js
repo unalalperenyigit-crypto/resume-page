@@ -46,7 +46,7 @@ const DATA = {
           "Synthesized and characterized block copolymers with active-targeting drug-delivery capability, from reaction design through characterization sample prep.",
           "Authored a research project for the international GENIUS Olympiad competition and was selected as a finalist."
         ], tags: ["Polymer Chemistry", "Drug Delivery"] },
-      { role: "Volunteer Intern", org: "SUNUM Nanotechnology Research Center", date: "2025",
+      { role: "Volunteer Intern", org: "SUNUM Nanotechnology Research Center", date: "Aug 2026 - Sep 2026",
         bullets: [
           "Worked on an EMI shielding project involving graphene oxide modification for MXene synthesis.",
           "Performed electrospinning work toward membrane fabrication."
@@ -140,7 +140,7 @@ const DATA = {
           "Aktif hedeflemeli ilaç taşıma yeteneklerine sahip blok kopolimerler sentezledi ve karakterize etti.",
           "Uluslararası GENIUS Olimpiyatları için bir araştırma projesi yazdı ve finalist olarak seçildi."
         ], tags: ["Polimer Kimyası", "İlaç Taşıma"] },
-      { role: "Gönüllü Stajyer", org: "SUNUM Nanoteknoloji Araştırma Merkezi", date: "2025",
+      { role: "Gönüllü Stajyer", org: "SUNUM Nanoteknoloji Araştırma Merkezi", date: "Ağustos 2026 - Eylül 2026",
         bullets: [
           "MXene sentezi için grafen oksit modifikasyonu içeren bir EMI (elektromanyetik girişim) kalkanlama projesinde çalıştı.",
           "Membran üretimine yönelik elektro-eğirme (electrospinning) çalışmaları gerçekleştirdi."
